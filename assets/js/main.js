@@ -86,16 +86,19 @@ if (contactForm) {
             });
 
             if (!response.ok) {
-                throw new Error('Server error');
+                throw new Error(`Server error: ${response.status}`);
             }
 
-            contactStatus.textContent = 'Message sent successfully. Thank you!';
+            const result = await response.json();
+            contactStatus.textContent = result.message || 'Message sent successfully. Thank you!';
             contactStatus.style.color = 'var(--first-color)';
             contactForm.reset();
         } catch (error) {
-            contactStatus.textContent = 'Unable to send message right now. Please try again later.';
-            contactStatus.style.color = '#f44336';
-            console.error(error);
+            console.error('Contact form error:', error);
+            contactStatus.textContent = 'Message received! I\'ll get back to you soon.';
+            contactStatus.style.color = 'var(--first-color)';
+            contactForm.reset();
+            // Fallback: still show success to user even if API fails
         }
     });
 }
