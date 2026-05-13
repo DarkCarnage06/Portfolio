@@ -213,11 +213,16 @@ img {
   bottom: 0;
   width: 260px;
 }
+.home__img img,
+.home__blob-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1rem;
+  object-fit: cover;
+}
 .home__blob {
   fill: var(--first-color);
-}
-.home__blob-img {
-  width: 360px;
 }
 
 /*BUTTONS*/
