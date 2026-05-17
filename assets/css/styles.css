@@ -329,7 +329,8 @@ img {
   transition: transform 0.3s ease;
   text-decoration: none;
   color: inherit;
-  display: block;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 .work__card:hover {
   transform: translateY(-5px);
@@ -339,6 +340,7 @@ img {
   height: 200px;
   object-fit: cover;
   transition: 1s;
+  display: block;
 }
 .work__img:hover {
   transform: scale(1.05);
