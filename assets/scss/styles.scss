@@ -183,13 +183,18 @@ img{
     position: relative;
     row-gap: 5rem;
     padding: 4rem 0 5rem;
+    align-items: start;
+    grid-template-columns: 1fr;
 
     &__data{
-        align-self: center;
+        align-self: start;
+        min-width: 0;
     }
     &__title{
         font-size: var(--big-font-size);
         margin-bottom: var(--mb-5);
+        max-width: 100%;
+        overflow-wrap: break-word;
 
         &-color{
             color: var(--first-color);
@@ -211,10 +216,19 @@ img{
     }
 
     &__img{
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 260px;
+        position: relative;
+        width: min(260px, 85vw);
+        justify-self: center;
+        margin-top: var(--mb-4);
+
+        img{
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 1rem;
+            object-fit: cover;
+            aspect-ratio: 1;
+        }
     }
     &__blob{
         fill: var(--first-color);
@@ -436,7 +450,18 @@ img{
 @media screen and (min-width: 576px){
     .home{
         padding: 4rem 0 2rem;
+        grid-template-columns: minmax(0, 1fr) minmax(0, min(220px, 36vw));
+        column-gap: clamp(2rem, 5vw, 3.5rem);
+        row-gap: 2.5rem;
+
+        &__data{
+            grid-column: 1;
+            grid-row: 1;
+            padding-right: clamp(1rem, 3vw, 2rem);
+        }
         &__social{
+            grid-column: 1;
+            grid-row: 2;
             padding-top: 0;
             padding-bottom: 2.5rem;
             flex-direction: row;
@@ -448,8 +473,14 @@ img{
             }
         }
         &__img{
-            width: 300px;
-            bottom: 25%;
+            grid-column: 2;
+            grid-row: 1 / -1;
+            width: 100%;
+            max-width: 100%;
+            justify-self: stretch;
+            align-self: start;
+            margin-top: 0;
+            margin-left: 0;
         }
     }
 
@@ -519,10 +550,16 @@ img{
     }
     .home{
         padding: 8rem 0 2rem;
+        grid-template-columns: minmax(0, 1fr) minmax(0, min(260px, 32vw));
+        column-gap: clamp(2.5rem, 6vw, 5rem);
+
+        &__data{
+            padding-right: clamp(1.5rem, 4vw, 3rem);
+        }
         
         &__img{
-            width: 400px;
-            bottom: 10%;
+            width: 100%;
+            max-width: 100%;
         }
     }
 
@@ -555,9 +592,16 @@ img{
     }
     .home{
         padding: 10rem 0 2rem;
+        grid-template-columns: minmax(0, 1fr) minmax(0, min(280px, 28vw));
+        column-gap: clamp(3rem, 7vw, 6.5rem);
+
+        &__data{
+            padding-right: clamp(1.75rem, 4vw, 3.5rem);
+        }
 
         &__img{
-            width: 450px;
+            width: 100%;
+            max-width: 100%;
         }
     }
 }
