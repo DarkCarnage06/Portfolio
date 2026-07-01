@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-responsive-complete-main",
+  "version": "1.0.0",
+  "description": "Portfolio website with server-based contact form",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^6.11.2",
+    "openai": "^4.57.0",
+    "zod": "^3.23.0"
+  }
+}

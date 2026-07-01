@@ -1,0 +1,9 @@
+﻿.env
+node_modules/
+__pycache__/
+*.py[cod]
+.DS_Store
+data/messages.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

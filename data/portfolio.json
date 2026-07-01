@@ -1,0 +1,99 @@
+{
+  "name": "Atharv Randive",
+  "title": "AI/ML Developer",
+  "hero": {
+    "headline": "Hi, I'am Atharv Randive AI/ML Developer",
+    "summary": "B.Tech student in Artificial Intelligence and Machine Learning at Manipal University Jaipur, passionate about building intelligent systems that solve real-world problems.",
+    "location": "Jaipur, India"
+  },
+  "about": {
+    "summary": "Atharv is a B.Tech student in Artificial Intelligence and Machine Learning at Manipal University Jaipur. He is passionate about leveraging AI and ML to solve practical problems, and he has built projects ranging from space-tech machine learning to web applications for medical access and indoor navigation.",
+    "strengths": [
+      "Machine learning",
+      "Deep learning",
+      "Computer vision",
+      "Web development",
+      "RAG systems",
+      "Full-stack product building"
+    ]
+  },
+  "skills": {
+    "languages": ["Python", "JavaScript", "TypeScript"],
+    "frameworks": ["Next.js", "React", "Node.js", "Express"],
+    "ai": ["Machine Learning", "Deep Learning", "Computer Vision", "RAG", "NLP"],
+    "databases": ["PostgreSQL", "MongoDB", "Neon Postgres", "pgvector"],
+    "tools": ["Docker", "Vercel", "Git", "GitHub", "Claude", "Anthropic API", "OpenAI"]
+  },
+  "projects": [
+    {
+      "name": "Distributor Management Platform",
+      "description": "Built a full-stack web platform to digitize order collection for distributors and shopkeepers with online order placement, distributor dashboards, and real-time order tracking.",
+      "technologies": ["Next.js", "Node.js", "PostgreSQL", "Vercel"],
+      "highlights": ["Full-stack", "Real-world business workflow", "Digital operations"],
+      "demo": "https://distributor-yoxh.vercel.app"
+    },
+    {
+      "name": "Internship Studio 2.0",
+      "description": "Rebuilt an internship matcher as a semantic RAG system using parsed resumes, pgvector, and cosine similarity for grounded job matching.",
+      "technologies": ["Python", "RAG", "pgvector", "Claude"],
+      "highlights": ["Semantic matching", "Grounded explanations", "Resume job matching"],
+      "github": "https://github.com/DarkCarnage06/Internship-Studio2.0",
+      "demo": "https://internship-studio2-0.vercel.app/"
+    },
+    {
+      "name": "Multimodal Image Processing - Image Captioning",
+      "description": "Built a multimodal deep learning pipeline using CNN encoders and Transformer or LSTM decoders for image-to-text generation with attention mechanisms.",
+      "technologies": ["CNN", "LSTM", "NLP", "Computer Vision"],
+      "highlights": ["Deep learning", "Image captioning", "Attention mechanisms"]
+    },
+    {
+      "name": "NavPal - Indoor Navigation PWA",
+      "description": "Built an indoor navigation progressive web app for Manipal University Jaipur using QR anchor-based positioning and Dijkstra pathfinding with persistent map management.",
+      "technologies": ["Next.js", "MongoDB", "React-Konva", "SVG"],
+      "highlights": ["PWA", "Indoor navigation", "Pathfinding"]
+    },
+    {
+      "name": "AI Spend Audit – Credix",
+      "description": "Built a full-stack AI spend audit tool that analyzes AI subscriptions and identifies overspending with shareable audit URLs and AI-generated summaries.",
+      "technologies": ["Next.js", "TypeScript", "Neon Postgres", "Anthropic API"],
+      "highlights": ["Cost optimization", "AI subscription auditing", "Analytics"],
+      "demo": "https://credix-audit-ti1g.vercel.app/"
+    }
+  ],
+  "experience": [
+    {
+      "role": "ISRO Space Science Outreach & ML Research",
+      "description": "Conducted space science awareness sessions and developed an ML-based model for rocket thrust estimation and prediction using simulation and propulsion parameters.",
+      "technologies": ["Machine Learning", "Python", "Data Analysis", "Research"]
+    },
+    {
+      "role": "Hypermotive ML Internship Projects",
+      "description": "Worked on machine learning algorithms including regression, clustering, SVM, and random forest, and built image-detection models with scikit-learn and TensorFlow.",
+      "technologies": ["Python", "scikit-learn", "TensorFlow", "CNN"]
+    }
+  ],
+  "education": {
+    "degree": "B.Tech in Artificial Intelligence and Machine Learning",
+    "institution": "Manipal University Jaipur",
+    "summary": "Atharv is currently pursuing his degree in AI/ML at Manipal University Jaipur."
+  },
+  "achievements": [
+    "Built AI-powered products with measurable business impact",
+    "Developed RAG systems and semantic search workflows",
+    "Delivered full-stack projects for real-world problems"
+  ],
+  "contact": {
+    "email": "randiveatharv027@gmail.com",
+    "github": "https://github.com/DarkCarnage06",
+    "linkedin": "https://www.linkedin.com/in/atharv-a-0a73a0279"
+  },
+  "social": {
+    "github": "https://github.com/DarkCarnage06",
+    "linkedin": "https://www.linkedin.com/in/atharv-a-0a73a0279"
+  },
+  "resume": {
+    "available": false,
+    "note": "Resume details are not included in the current portfolio snapshot."
+  },
+  "summary": "Atharv is an AI/ML developer building practical products that span machine learning, full-stack engineering, computer vision, and RAG systems."
+}
