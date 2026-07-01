@@ -1,6 +1,9 @@
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
+
 const express = require('express');
 const fs = require('fs').promises;
-const path = require('path');
+const chatRoutes = require('./backend/routes/chat');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,6 +12,14 @@ const dataPath = path.join(dataDir, 'messages.json');
 
 app.use(express.json());
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use(chatRoutes);
+
+app.use((err, req, res, next) => {
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    return res.status(400).json({ error: 'Invalid JSON payload.' });
+  }
+  return next(err);
+});
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
