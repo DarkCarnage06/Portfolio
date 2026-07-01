@@ -1,5 +1,12 @@
+const OpenAI = require('openai');
 const { portfolioPrompt } = require('../prompts/systemPrompt');
 const { loadPortfolioContext, buildContextChunks, retrieveRelevantContext } = require('../rag/portfolioRag');
+
+function getOpenAIClient() {
+  const key = process.env.OPENAI_API_KEY;
+  if (!key) return null;
+  return new OpenAI({ apiKey: key });
+}
 
 function getGeminiApiKey() {
   const apiKey = process.env.GEMINI_API_KEY;
@@ -69,6 +76,45 @@ async function generateChatReply({ message, history = [], onChunk }) {
 
   const fallback = buildFallbackReply(message, portfolio);
 
+  // Prefer OpenAI if configured (more stable across deployments). Fall back to Gemini if present.
+  const openai = getOpenAIClient();
+  if (openai) {
+    try {
+      if (onChunk) {
+        const stream = await openai.responses.create({
+          model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+          input: messages,
+          temperature: 0.3,
+          stream: true
+        });
+
+        let reply = '';
+        for await (const event of stream) {
+          const delta = event?.delta || event?.output_text || '';
+          const text = typeof delta === 'string' ? delta : (delta?.content || '');
+          if (text) {
+            reply += text;
+            onChunk(text);
+          }
+        }
+
+        return reply || fallback;
+      }
+
+      const response = await openai.responses.create({
+        model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+        input: messages,
+        temperature: 0.3
+      });
+
+      return response.output_text || fallback;
+    } catch (err) {
+      console.warn('OpenAI request failed, falling back to other providers or portfolio.', err?.message || err);
+      // continue to try Gemini or fallback
+    }
+  }
+
+  // If OpenAI not available or failed, try Gemini if configured
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     if (onChunk) {
@@ -79,15 +125,13 @@ async function generateChatReply({ message, history = [], onChunk }) {
 
   const prompt = `${messages.map((entry) => `${entry.role === 'system' ? 'System' : entry.role === 'user' ? 'User' : 'Assistant'}: ${entry.content}`).join('\n')}\n\nAssistant:`;
 
-  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+  const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5:generateText?key=${apiKey}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      generationConfig: {
-        temperature: 0.3,
-        maxOutputTokens: 700
-      }
+      prompt,
+      temperature: 0.3,
+      maxOutputTokens: 700
     })
   });
 
@@ -98,15 +142,11 @@ async function generateChatReply({ message, history = [], onChunk }) {
   }
 
   const data = await response.json();
-  const reply = data?.candidates?.[0]?.content?.parts?.map((part) => part.text).join('') || fallback;
-
-  // Sanitize any accidental OpenAI references inside model text
-  const sanitizedReply = reply.replace(/https?:\/\/platform\.openai\.com[^\s]*/gi, '[provider docs link removed]').replace(/OpenAI/gi, 'the model provider');
+  const reply = data?.candidates?.[0]?.content?.parts?.map((part) => part.text).join('') || data?.output?.[0]?.content || fallback;
+  const sanitizedReply = String(reply).replace(/https?:\/\/platform\.openai\.com[^\s]*/gi, '[provider docs link removed]').replace(/OpenAI/gi, 'the model provider');
 
   if (onChunk) {
-    for (const char of sanitizedReply) {
-      onChunk(char);
-    }
+    for (const char of sanitizedReply) onChunk(char);
   }
 
   return sanitizedReply || fallback;
