@@ -3,240 +3,279 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Atharv Randive is an AI/ML developer and full-stack builder creating practical products around machine learning, RAG systems, computer vision, and product-focused web apps.">
 
         <link rel="stylesheet" href="assets/css/styles.css">
         <link rel="stylesheet" href="assets/css/chat.css">
 
-        <!-- =====BOX ICONS===== -->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
 
-        <title>Atharv Randive - AI/ML Portfolio</title>
+        <title>Atharv Randive | AI/ML Developer</title>
     </head>
     <body>
-        <!--===== HEADER =====-->
         <header class="l-header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="#" class="nav__logo">Atharv</a>
+                    <a href="#home" class="nav__logo"><span class="nav__logo-mark">A</span>Atharv</a>
                 </div>
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
                         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
                         <li class="nav__item"><a href="#experience" class="nav__link">Experience</a></li>
+                        <li class="nav__item"><a href="#work" class="nav__link">Projects</a></li>
+                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                     </ul>
                 </div>
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
-                </div>
+                <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+                    <i class="bx bx-menu"></i>
+                </button>
             </nav>
         </header>
 
         <main class="l-main">
-            <!--===== HOME =====-->
             <section class="home bd-grid" id="home">
                 <div class="home__data">
-                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Atharv Randive</span><br> AI/ML Developer</h1>
+                    <p class="eyebrow">AI / ML developer · full-stack builder</p>
+                    <h1 class="home__title">I design and build <span class="home__title-color">AI systems</span> and <span class="home__title-color">product-minded software</span> that solve real problems.</h1>
+                    <p class="home__subtitle">Atharv Randive is a B.Tech AI/ML student at Manipal University Jaipur building practical systems across machine learning, RAG, computer vision, and modern web product development.</p>
 
-                    <a href="mailto:randiveatharv027@gmail.com" class="button">Contact</a>
+                    <div class="home__actions">
+                        <a href="#work" class="button">View projects</a>
+                        <a href="#contact" class="button button--secondary">Contact me</a>
+                    </div>
+
+                    <div class="home__meta" aria-label="Portfolio highlights">
+                        <span>5 core builds</span>
+                        <span>AI + ML</span>
+                        <span>Full-stack</span>
+                    </div>
                 </div>
 
-                <div class="home__social">
-                    <a href="https://www.linkedin.com/in/atharv-a-0a73a0279" target="_blank" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-                    <a href="https://github.com/DarkCarnage06" target="_blank" class="home__social-icon"><i class='bx bxl-github' ></i></a>
+                <div class="home__social" aria-label="Social links">
+                    <a href="https://www.linkedin.com/in/atharv-a-0a73a0279" target="_blank" rel="noreferrer" class="home__social-icon" aria-label="LinkedIn profile"><i class="bx bxl-linkedin"></i></a>
+                    <a href="https://github.com/DarkCarnage06" target="_blank" rel="noreferrer" class="home__social-icon" aria-label="GitHub profile"><i class="bx bxl-github"></i></a>
+                    <a href="mailto:randiveatharv027@gmail.com" class="home__social-icon" aria-label="Email Atharv"><i class="bx bx-envelope"></i></a>
                 </div>
 
-                <div class="home__img">
-                    <img src="assets/img/home-photo.png?v=3" alt="Atharv Randive profile photo" class="home__photo">
+                <div class="home__visual">
+                    <div class="home__card">
+                        <img src="assets/img/home-photo.png?v=3" alt="Atharv Randive profile portrait" class="home__photo">
+                        <div class="home__badge home__badge--top">AI / ML</div>
+                        <div class="home__badge home__badge--bottom">Product thinking</div>
+                    </div>
                 </div>
-
             </section>
 
-            <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <h2 class="section-title">About</h2>
+            <section class="about section" id="about">
+                <div class="section-heading">
+                    <p class="section-kicker">About</p>
+                    <h2 class="section-title">I turn research and product ideas into useful software.</h2>
+                </div>
 
                 <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="assets/img/about.jpg" alt="">
+                    <div class="about__img-wrap">
+                        <img src="assets/img/about.jpg" alt="Atharv Randive in a technical project setting" class="about__img">
                     </div>
-                    
-                    <div>
-                        <h2 class="about__subtitle">I'am Atharv Randive</h2>
-                        <p class="about__text">B.Tech student in Artificial Intelligence and Machine Learning at Manipal University Jaipur, passionate about leveraging AI/ML to solve real-world problems. Experienced in developing intelligent systems, from ML models for space technology to web applications for medical access and indoor navigation.</p>           
-                    </div>                                   
+
+                    <div class="about__content">
+                        <p class="about__text">I’m Atharv Randive, a B.Tech student in Artificial Intelligence and Machine Learning at Manipal University Jaipur. My work sits at the intersection of machine learning, product building, and modern web engineering — from computer vision and RAG systems to real-world applications that improve operations and access.</p>
+
+                        <div class="about__highlights">
+                            <div class="about__stat">
+                                <strong>5</strong>
+                                <span>core builds</span>
+                            </div>
+                            <div class="about__stat">
+                                <strong>2</strong>
+                                <span>major technical tracks</span>
+                            </div>
+                            <div class="about__stat">
+                                <strong>AI</strong>
+                                <span>+ full-stack</span>
+                            </div>
+                        </div>
+
+                        <div class="education-block">
+                            <p class="education-block__label">Education</p>
+                            <h3>B.Tech in Artificial Intelligence and Machine Learning</h3>
+                            <p>Manipal University Jaipur</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!--===== SKILLS =====-->
             <section class="skills section" id="skills">
-                <h2 class="section-title">Skills</h2>
+                <div class="section-heading">
+                    <p class="section-kicker">Skills</p>
+                    <h2 class="section-title">Technical breadth across the stack.</h2>
+                </div>
 
-                <div class="skills__container bd-grid">          
-                    <div>
-                        <h2 class="skills__subtitle">Technical Skills</h2>
-                        <p class="skills__text">Proficient in machine learning, web development, and AI technologies with hands-on experience in various projects and internships.</p>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-terminal skills__icon'></i>
-                                <span class="skills__name">Python</span>
-                            </div>
-                            <div class="skills__bar skills__html">
-
-                            </div>
-                            <div>
-                                <span class="skills__percentage">90%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-brain skills__icon'></i>
-                                <span class="skills__name">Machine Learning</span>
-                            </div>
-                            <div class="skills__bar skills__css">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">85%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-chip skills__icon' ></i>
-                                <span class="skills__name">AI/Computer Vision</span>
-                            </div>
-                            <div class="skills__bar skills__js">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">80%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-html5 skills__icon'></i>
-                                <span class="skills__name">Web Development</span>
-                            </div>
-                            <div class="skills__bar skills__ux">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">75%</span>
-                            </div>
+                <div class="skills__grid">
+                    <div class="skill-group">
+                        <h3>AI / ML</h3>
+                        <div class="skill-tags">
+                            <span>Machine Learning</span>
+                            <span>Deep Learning</span>
+                            <span>Computer Vision</span>
+                            <span>RAG</span>
+                            <span>NLP</span>
+                            <span>TensorFlow</span>
+                            <span>scikit-learn</span>
                         </div>
                     </div>
-                    
-                    <div>              
-                        <img src="assets/img/work3.jpg" alt="" class="skills__img">
+
+                    <div class="skill-group">
+                        <h3>Frontend</h3>
+                        <div class="skill-tags">
+                            <span>Next.js</span>
+                            <span>React</span>
+                            <span>TypeScript</span>
+                            <span>JavaScript</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>Backend</h3>
+                        <div class="skill-tags">
+                            <span>Node.js</span>
+                            <span>Express</span>
+                            <span>Python</span>
+                            <span>PostgreSQL</span>
+                            <span>MongoDB</span>
+                            <span>pgvector</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>Tools & infrastructure</h3>
+                        <div class="skill-tags">
+                            <span>Git</span>
+                            <span>GitHub</span>
+                            <span>Vercel</span>
+                            <span>Docker</span>
+                            <span>Anthropic API</span>
+                            <span>OpenAI</span>
+                            <span>Claude</span>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!--===== WORK =====-->
             <section class="work section" id="work">
-                <h2 class="section-title">Work</h2>
+                <div class="section-heading">
+                    <p class="section-kicker">Projects</p>
+                    <h2 class="section-title">Selected work built for real problems.</h2>
+                </div>
 
                 <div class="work__container bd-grid">
-                    <div class="work__card">
-                        <div class="work__card-link">
-                            <img src="assets/img/work2.jpg" alt="Distributor Management Platform" class="work__img">
-                            <div class="work__content">
-                                <h3 class="work__title">Distributor Management Platform</h3>
-                                <p class="work__description">Built a full-stack web platform to digitize order collection for distributors and shopkeepers. Online order placement, distributor dashboard, and real-time order tracking — inspired by a real problem in my dad’s distribution business.</p>
-                                <div class="work__tech">
-                                    <span class="work__tech-item">Next.js</span>
-                                    <span class="work__tech-item">Node.js</span>
-                                    <span class="work__tech-item">PostgreSQL</span>
-                                    <span class="work__tech-item">Vercel</span>
-                                    <a href="https://distributor-yoxh.vercel.app" target="_blank" class="work__tech-item">Live Demo</a>
-                                </div>
+                    <article class="work__card work__card--featured">
+                        <img src="assets/img/work2.jpg" alt="Distributor Management Platform product preview" class="work__img">
+                        <div class="work__content">
+                            <div class="work__meta-row">
+                                <span class="work__eyebrow">Featured project</span>
+                                <span class="work__live"><a href="https://distributor-yoxh.vercel.app" target="_blank" rel="noreferrer">Live demo</a></span>
+                            </div>
+                            <h3 class="work__title">Distributor Management Platform</h3>
+                            <p class="work__description">Built a full-stack workflow to digitize order collection for distributors and shopkeepers, with online ordering, dashboard tracking, and a practical business workflow inspired by a real operational problem.</p>
+                            <div class="work__tech">
+                                <span class="work__tech-item">Next.js</span>
+                                <span class="work__tech-item">Node.js</span>
+                                <span class="work__tech-item">PostgreSQL</span>
+                                <span class="work__tech-item">Vercel</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="work__card">
-                        <div class="work__card-link">
-                            <img src="assets/img/work1.jpg" alt="Internship Studio 2.0 - Semantic Resume and Job Matching" class="work__img">
-                            <div class="work__content">
-                                <h3 class="work__title">Internship Studio 2.0</h3>
-                                <p class="work__description">Rebuilt the earlier internship matcher as a semantic RAG system: resumes are parsed and embedded with Voyage AI, stored in PostgreSQL with pgvector, and matched to job descriptions using cosine similarity over meaning rather than keyword overlap. The top evidence is passed to Claude to generate grounded explanations of fit without inventing experience.</p>
-                                <div class="work__tech">
-                                    <span class="work__tech-item">Python</span>
-                                    <span class="work__tech-item">RAG</span>
-                                    <span class="work__tech-item">pgvector</span>
-                                    <span class="work__tech-item">Claude</span>
-                                    <a href="https://github.com/DarkCarnage06/Internship-Studio2.0" target="_blank" rel="noopener noreferrer" class="work__tech-item">GitHub</a>
-                                    <a href="https://internship-studio2-0.vercel.app/" target="_blank" rel="noopener noreferrer" class="work__tech-item">Live Demo</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="work__card">
-                        <div class="work__card-link">
-                            <img src="assets/img/work3.jpg" alt="Multimodal Image Processing - Image Captioning" class="work__img">
-                            <div class="work__content">
-                                <h3 class="work__title">Multimodal Image Processing - Image Captioning</h3>
-                                <p class="work__description">Built a multimodal deep learning pipeline leveraging CNN encoders and Transformer/LSTM decoders for image-to-text generation with attention mechanisms.</p>
-                                <div class="work__tech">
-                                    <span class="work__tech-item">CNN</span>
-                                    <span class="work__tech-item">LSTM</span>
-                                    <span class="work__tech-item">NLP</span>
-                                    <span class="work__tech-item">Computer Vision</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </article>
 
-                    <div class="work__card">
-                        <div class="work__card-link">
-                            <img src="assets/img/work4.jpg" alt="NavPal - Indoor Navigation PWA" class="work__img">
-                            <div class="work__content">
-                                <h3 class="work__title">NavPal - Indoor Navigation PWA</h3>
-                                <p class="work__description">Built an indoor navigation PWA for Manipal University Jaipur using QR anchor-based positioning and Dijkstra pathfinding with full persistent map management.</p>
-                                <div class="work__tech">
-                                    <span class="work__tech-item">Next.js</span>
-                                    <span class="work__tech-item">MongoDB</span>
-                                    <span class="work__tech-item">React-Konva</span>
-                                    <span class="work__tech-item">SVG</span>
-                                </div>
+                    <article class="work__card">
+                        <img src="assets/img/work1.jpg" alt="Internship Studio 2.0 preview" class="work__img">
+                        <div class="work__content">
+                            <div class="work__meta-row">
+                                <span class="work__eyebrow">AI product</span>
+                                <span class="work__live"><a href="https://internship-studio2-0.vercel.app/" target="_blank" rel="noreferrer">Demo</a></span>
+                            </div>
+                            <h3 class="work__title">Internship Studio 2.0</h3>
+                            <p class="work__description">Rebuilt the internship matcher as a semantic RAG system using parsed resumes, pgvector, and cosine similarity to match candidates to opportunities with grounded explanations.</p>
+                            <div class="work__tech">
+                                <span class="work__tech-item">Python</span>
+                                <span class="work__tech-item">RAG</span>
+                                <span class="work__tech-item">pgvector</span>
+                                <span class="work__tech-item">Claude</span>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                                        <div class="work__card">
-                                            <div class="work__card-link">
-                                                        <img src="assets/img/work2.jpg" alt="AI Spend Audit Tool" class="work__img">
-                                                        <div class="work__content">
-                                                            <h3 class="work__title">AI Spend Audit – Credix</h3>
-                                                            <p class="work__description">Full-stack AI spend audit tool that analyzes a startup's AI subscriptions (Cursor, Claude, ChatGPT, Copilot, Gemini) and identifies overspending with rule-based logic — saving teams up to $500+/month. Features shareable audit URLs, AI-generated summaries via Anthropic API, and transactional email via Resend. Lighthouse: 93 Performance, 96 Accessibility, 100 Best Practices.</p>
-                                                            <div class="work__tech">
-                                                                <span class="work__tech-item">Next.js</span>
-                                                                <span class="work__tech-item">TypeScript</span>
-                                                                <span class="work__tech-item">Neon Postgres</span>
-                                                                <span class="work__tech-item">Anthropic API</span>
-                                                                <a href="https://credix-audit-ti1g.vercel.app/" target="_blank" class="work__tech-item">Live Demo</a>
-                                                            </div>
-                                                        </div>
-                                                </div>
-                                        </div>
+                    <article class="work__card">
+                        <img src="assets/img/work3.jpg" alt="Multimodal Image Processing preview" class="work__img">
+                        <div class="work__content">
+                            <div class="work__meta-row">
+                                <span class="work__eyebrow">Research</span>
+                            </div>
+                            <h3 class="work__title">Multimodal Image Processing</h3>
+                            <p class="work__description">Built a multimodal deep learning pipeline for image captioning using CNN encoders and Transformer or LSTM decoders with attention mechanisms.</p>
+                            <div class="work__tech">
+                                <span class="work__tech-item">CNN</span>
+                                <span class="work__tech-item">LSTM</span>
+                                <span class="work__tech-item">NLP</span>
+                                <span class="work__tech-item">Computer Vision</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work__card">
+                        <img src="assets/img/work4.jpg" alt="NavPal indoor navigation product preview" class="work__img">
+                        <div class="work__content">
+                            <div class="work__meta-row">
+                                <span class="work__eyebrow">PWA</span>
+                            </div>
+                            <h3 class="work__title">NavPal - Indoor Navigation</h3>
+                            <p class="work__description">Built an indoor navigation PWA for Manipal University Jaipur using QR anchor-based positioning and Dijkstra pathfinding with persistent map management.</p>
+                            <div class="work__tech">
+                                <span class="work__tech-item">Next.js</span>
+                                <span class="work__tech-item">MongoDB</span>
+                                <span class="work__tech-item">React-Konva</span>
+                                <span class="work__tech-item">SVG</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="work__card">
+                        <img src="assets/img/work2.jpg" alt="AI Spend Audit Credix product preview" class="work__img">
+                        <div class="work__content">
+                            <div class="work__meta-row">
+                                <span class="work__eyebrow">AI workflow</span>
+                                <span class="work__live"><a href="https://credix-audit-ti1g.vercel.app/" target="_blank" rel="noreferrer">Demo</a></span>
+                            </div>
+                            <h3 class="work__title">AI Spend Audit – Credix</h3>
+                            <p class="work__description">Built a full-stack AI spend audit tool for identifying overspending across AI subscriptions such as Cursor, Claude, ChatGPT, Copilot, and Gemini.</p>
+                            <div class="work__tech">
+                                <span class="work__tech-item">Next.js</span>
+                                <span class="work__tech-item">TypeScript</span>
+                                <span class="work__tech-item">Neon Postgres</span>
+                                <span class="work__tech-item">Anthropic API</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </section>
 
-            <!--===== EXPERIENCE =====-->
             <section class="experience section" id="experience">
-                <h2 class="section-title">Experience</h2>
+                <div class="section-heading">
+                    <p class="section-kicker">Experience</p>
+                    <h2 class="section-title">Research, internships, and product-building experience.</h2>
+                </div>
 
-                <div class="work__container bd-grid">
-                    <div class="work__card">
-                        <img src="assets/img/work5.jpg" alt="ISRO Space Science Outreach & ML Research" class="work__img">
-                        <div class="work__content">
-                            <h3 class="work__title">ISRO Space Science Outreach & ML Research</h3>
-                            <p class="work__description">Conducted space science awareness sessions and developed an ML-based model for rocket thrust estimation/prediction using simulation and propulsion parameters.</p>
+                <div class="experience__list">
+                    <article class="experience__item">
+                        <div class="experience__time">Research</div>
+                        <div class="experience__content">
+                            <h3>ISRO Space Science Outreach & ML Research</h3>
+                            <p>Conducted space science awareness sessions and developed an ML-based model for rocket thrust estimation and prediction using simulation and propulsion parameters.</p>
                             <div class="work__tech">
                                 <span class="work__tech-item">Machine Learning</span>
                                 <span class="work__tech-item">Python</span>
@@ -244,13 +283,13 @@
                                 <span class="work__tech-item">Research</span>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="work__card">
-                        <img src="assets/img/work6.jpg" alt="Hypermotive ML Internship Projects" class="work__img">
-                        <div class="work__content">
-                            <h3 class="work__title">Hypermotive ML Internship Projects</h3>
-                            <p class="work__description">Worked on ML algorithms including Regression, Clustering, SVM, Random Forest. Built models using scikit-learn and TensorFlow with CNN and YOLO for image detection.</p>
+                    <article class="experience__item">
+                        <div class="experience__time">Internship</div>
+                        <div class="experience__content">
+                            <h3>Hypermotive ML Internship Projects</h3>
+                            <p>Worked on regression, clustering, SVM, and random forest models, alongside CNN and YOLO-based image detection systems using scikit-learn and TensorFlow.</p>
                             <div class="work__tech">
                                 <span class="work__tech-item">Python</span>
                                 <span class="work__tech-item">scikit-learn</span>
@@ -258,41 +297,65 @@
                                 <span class="work__tech-item">CNN</span>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </section>
 
-            <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
-
                 <div class="contact__container bd-grid">
-                    <form id="contact-form" class="contact__form">
-                        <input id="contact-name" type="text" placeholder="Name" class="contact__input" required>
-                        <input id="contact-email" type="email" placeholder="Email" class="contact__input" required>
-                        <textarea id="contact-message" name="message" cols="0" rows="10" placeholder="Message" class="contact__input" required></textarea>
-                        <input id="contact-submit" type="submit" value="Send" class="contact__button button">
-                        <p id="contact-status" class="contact__status"></p>
+                    <div class="contact__copy">
+                        <p class="section-kicker">Contact</p>
+                        <h2 class="section-title">Let’s build something useful.</h2>
+                        <p class="contact__lead">I’m open to product engineering opportunities, AI projects, and software collaborations where thoughtful systems and practical execution matter.</p>
+
+                        <div class="contact__actions">
+                            <a href="mailto:randiveatharv027@gmail.com" class="button">Email me</a>
+                            <a href="https://www.linkedin.com/in/atharv-a-0a73a0279" target="_blank" rel="noreferrer" class="button button--secondary">LinkedIn</a>
+                        </div>
+
+                        <div class="contact__links">
+                            <a href="mailto:randiveatharv027@gmail.com"><i class="bx bx-envelope"></i> randiveatharv027@gmail.com</a>
+                            <a href="https://github.com/DarkCarnage06" target="_blank" rel="noreferrer"><i class="bx bxl-github"></i> github.com/DarkCarnage06</a>
+                        </div>
+                    </div>
+
+                    <form id="contact-form" class="contact__form" novalidate>
+                        <label class="contact__field">
+                            <span>Name</span>
+                            <input id="contact-name" type="text" placeholder="Your name" required>
+                        </label>
+                        <label class="contact__field">
+                            <span>Email</span>
+                            <input id="contact-email" type="email" placeholder="you@example.com" required>
+                        </label>
+                        <label class="contact__field">
+                            <span>Message</span>
+                            <textarea id="contact-message" rows="6" placeholder="Tell me about the project, role, or idea." required></textarea>
+                        </label>
+                        <button id="contact-submit" type="submit" class="button button--form">Send message</button>
+                        <p id="contact-status" class="contact__status" aria-live="polite"></p>
                     </form>
                 </div>
             </section>
         </main>
 
-        <!--===== FOOTER =====-->
         <footer class="footer">
-            <p class="footer__title">Atharv Randive</p>
-            <div class="footer__social">
-                <a href="https://www.linkedin.com/in/atharv-a-0a73a0279" target="_blank" class="footer__icon"><i class='bx bxl-linkedin' ></i></a>
-                <a href="https://github.com/DarkCarnage06" target="_blank" class="footer__icon"><i class='bx bxl-github' ></i></a>
+            <div class="footer__inner">
+                <p class="footer__title">Atharv Randive</p>
+                <p class="footer__copy">Available for AI product work, software builds, and meaningful collaboration.</p>
+                <div class="footer__actions">
+                    <a href="mailto:randiveatharv027@gmail.com" class="footer__button">Email</a>
+                    <a href="https://www.linkedin.com/in/atharv-a-0a73a0279" target="_blank" rel="noreferrer" class="footer__button footer__button--secondary">LinkedIn</a>
+                </div>
+                <div class="footer__social">
+                    <a href="https://www.linkedin.com/in/atharv-a-0a73a0279" target="_blank" rel="noreferrer" class="footer__icon" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+                    <a href="https://github.com/DarkCarnage06" target="_blank" rel="noreferrer" class="footer__icon" aria-label="GitHub"><i class="bx bxl-github"></i></a>
+                    <a href="mailto:randiveatharv027@gmail.com" class="footer__icon" aria-label="Email"><i class="bx bx-envelope"></i></a>
+                </div>
             </div>
-            <p class="footer__copy">&#169; 2026 Atharv Randive. All rights reserved</p>
         </footer>
 
-
-        <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
-
-        <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
         <script src="assets/js/chat.js"></script>
     </body>
