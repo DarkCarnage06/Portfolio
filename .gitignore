@@ -1,5 +1,7 @@
-﻿.env
+.env
 node_modules/
+.next/
+_legacy_backup/
 __pycache__/
 *.py[cod]
 .DS_Store
