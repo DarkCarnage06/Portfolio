@@ -3,9 +3,15 @@ import fs from "fs";
 import path from "path";
 
 export async function GET() {
-  const filePath = path.join(process.cwd(), "public", "Atharv_Randive_Resume.pdf");
+  const possiblePaths = [
+    path.join(process.cwd(), "public", "Atharv_Randive_Resume.pdf"),
+    path.join(process.cwd(), "public", "images", "Atharv_resume_info.pdf"),
+    path.join(process.cwd(), "public", "Atharv_resume_info.pdf"),
+  ];
 
-  if (!fs.existsSync(filePath)) {
+  const filePath = possiblePaths.find((p) => fs.existsSync(p));
+
+  if (!filePath) {
     return new NextResponse("Resume file not found", { status: 404 });
   }
 
