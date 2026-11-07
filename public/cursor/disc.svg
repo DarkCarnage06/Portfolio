@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <defs>
+    <!-- 3D Disc Body Gradient -->
+    <radialGradient id="discBody" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#94CBF7" />
+      <stop offset="35%" stop-color="#5B9BD0" />
+      <stop offset="75%" stop-color="#3D7DB5" />
+      <stop offset="100%" stop-color="#286295" />
+    </radialGradient>
+
+    <!-- Glossy Specular Ring / Bevel -->
+    <linearGradient id="discBevel" x1="20%" y1="10%" x2="80%" y2="90%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8" />
+      <stop offset="40%" stop-color="#84C0F0" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#1C4B78" stop-opacity="0.7" />
+    </linearGradient>
+
+    <filter id="discGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <g filter="url(#discGlow)">
+    <!-- Base 3D Sphere / Disc -->
+    <circle cx="24" cy="24" r="21" fill="url(#discBody)" stroke="url(#discBevel)" stroke-width="1.6" />
+
+    <!-- Top Highlight Crescent -->
+    <ellipse cx="22" cy="14" rx="13" ry="6" fill="#FFFFFF" opacity="0.32" />
+  </g>
+</svg>

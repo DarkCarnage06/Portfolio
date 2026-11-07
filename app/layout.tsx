@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import SmoothScroll from "@/components/SmoothScroll";
+import Chatbot from "@/components/Chatbot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,7 +41,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`dark ${inter.variable}`}>
       <body className="bg-[#070B1A] text-[#9AA3B8] font-sans antialiased min-h-screen">
-        {children}
+        <ScrollProgressBar />
+        <CustomCursor />
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
+        <Chatbot />
       </body>
     </html>
   );

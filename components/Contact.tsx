@@ -4,14 +4,23 @@ import React from "react";
 import Image from "next/image";
 import { ArrowUpRight, Mail, Quote } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { motion } from "framer-motion";
 import { portfolioContent } from "@/data/content";
+import MagneticButton from "./MagneticButton";
+import TiltCard from "./TiltCard";
 
 export const Contact: React.FC = () => {
   const { contact } = portfolioContent;
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-[#070B1A] relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 md:py-28 bg-[#070B1A] relative overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.65, ease: "easeOut" }}
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
           {/* Column 1: Left CTA */}
           <div className="lg:col-span-5 flex flex-col items-start">
@@ -27,53 +36,54 @@ export const Contact: React.FC = () => {
               {contact.paragraph}
             </p>
 
-            <a
-              href={contact.cta.href}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-[#5B6CFF] to-[#7C5CFF] hover:brightness-110 shadow-glow-btn transition-all duration-200 active:scale-95"
-            >
-              <span>{contact.cta.text}</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
+            <MagneticButton href={contact.cta.href}>
+              <span className="btn-shine inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-[#5B6CFF] to-[#7C5CFF] hover:brightness-110 shadow-glow-btn transition-all duration-200">
+                <span>{contact.cta.text}</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </span>
+            </MagneticButton>
           </div>
 
           {/* Column 2: Quote Card */}
           <div className="lg:col-span-4">
-            <div className="bg-[#0D1328] border border-[#1E2644] rounded-xl p-6 relative flex flex-col justify-between shadow-xl h-full">
-              {/* Quote Icon Tile */}
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-[#5B6CFF] to-[#7C5CFF] flex items-center justify-center text-white shadow-glow-btn mb-4">
-                <Quote className="w-4 h-4 text-white fill-white" />
-              </div>
-
-              {/* Card Quote Content */}
-              <div className="mb-6">
-                <h3 className="text-sm font-semibold text-white mb-2">
-                  {contact.testimonial.heading}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#9AA3B8] leading-relaxed italic">
-                  &ldquo;{contact.testimonial.quote}&rdquo;
-                </p>
-              </div>
-
-              {/* Author Row */}
-              <div className="flex items-center gap-3 pt-3 border-t border-[#1E2644]/60">
-                <div className="w-9 h-9 rounded-full overflow-hidden border border-[#1E2644] relative bg-[#1A1B3A]">
-                  <Image
-                    src={contact.testimonial.avatar}
-                    alt={contact.testimonial.authorName}
-                    fill
-                    className="object-cover object-top"
-                  />
+            <TiltCard className="interactive-card rounded-xl border border-[#1E2644] bg-[#0D1328]">
+              <div className="p-6 relative flex flex-col justify-between shadow-xl h-full">
+                {/* Quote Icon Tile */}
+                <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-[#5B6CFF] to-[#7C5CFF] flex items-center justify-center text-white shadow-glow-btn mb-4">
+                  <Quote className="w-4 h-4 text-white fill-white" />
                 </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-white">
-                    {contact.testimonial.authorName}
-                  </h4>
-                  <p className="text-[11px] text-[#9AA3B8]">
-                    {contact.testimonial.authorRole}
+
+                {/* Card Quote Content */}
+                <div className="mb-6">
+                  <h3 className="text-sm font-semibold text-white mb-2">
+                    {contact.testimonial.heading}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#9AA3B8] leading-relaxed italic">
+                    &ldquo;{contact.testimonial.quote}&rdquo;
                   </p>
                 </div>
+
+                {/* Author Row */}
+                <div className="flex items-center gap-3 pt-3 border-t border-[#1E2644]/60">
+                  <div className="w-9 h-9 rounded-full overflow-hidden border border-[#1E2644] relative bg-[#1A1B3A]">
+                    <Image
+                      src={contact.testimonial.avatar}
+                      alt={contact.testimonial.authorName}
+                      fill
+                      className="object-cover object-top"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-white">
+                      {contact.testimonial.authorName}
+                    </h4>
+                    <p className="text-[11px] text-[#9AA3B8]">
+                      {contact.testimonial.authorRole}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
+            </TiltCard>
           </div>
 
           {/* Column 3: Follow Me & Direct Contact */}
@@ -114,8 +124,7 @@ export const Contact: React.FC = () => {
             </a>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
-

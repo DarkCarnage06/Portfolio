@@ -51,3 +51,114 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
+/* Cursor ripple animation */
+@keyframes cursorRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.95;
+    border-width: 2px;
+  }
+  100% {
+    width: 54px;
+    height: 54px;
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+.animate-cursor-ripple {
+  animation: cursorRipple 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Floating background orbs */
+@keyframes floatOrb1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(30px, -40px, 0) scale(1.08);
+  }
+}
+
+@keyframes floatOrb2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-40px, 30px, 0) scale(0.92);
+  }
+}
+
+.animate-float-orb-1 {
+  animation: floatOrb1 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-orb-2 {
+  animation: floatOrb2 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Floating code card bob */
+@keyframes codeCardBob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-code-bob {
+  animation: codeCardBob 6s ease-in-out infinite;
+}
+
+/* Button shine sweep */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  transition: none;
+  pointer-events: none;
+}
+
+.btn-shine:hover::after {
+  left: 140%;
+  transition: all 0.75s ease-in-out;
+}
+
+/* Section divider subtle pulse line */
+@keyframes gradientLineMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-line {
+  background: linear-gradient(90deg, transparent, rgba(91, 108, 255, 0.4), rgba(124, 92, 255, 0.6), rgba(91, 108, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: gradientLineMove 8s ease infinite;
+}
+
