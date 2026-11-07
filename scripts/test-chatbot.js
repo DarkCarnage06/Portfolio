@@ -101,6 +101,6 @@ async function runTests(baseUrl) {
   }
 }
 
-// Check if dev server is running on port 3000
-const testPort = process.env.PORT || 3000;
-runTests(`http://localhost:${testPort}`);
+// Check if URL passed as argument, else port
+const targetUrl = process.argv[2] || `http://localhost:${process.env.PORT || 3000}`;
+runTests(targetUrl);
