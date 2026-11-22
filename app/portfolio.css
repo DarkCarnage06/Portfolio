@@ -214,3 +214,58 @@
   [data-gesture]::after { display: none; }
   .project-row:is(:hover, :focus-within) .project-preview svg { transform: none; }
 }
+
+.pointer-trail, .reading-progress { display: none; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .pointer-trail {
+    display: block;
+    position: fixed;
+    z-index: 40;
+    inset: 0 auto auto 0;
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 50%;
+    border: 1px solid #dbff3f;
+    box-shadow: 0 0 18px #dbff3f35;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.76);
+    transition: translate .19s cubic-bezier(.13,.68,.24,1), opacity .2s, transform .25s var(--ease);
+  }
+  .pointer-trail[data-visible] { opacity: .72; }
+  .pointer-trail[data-action] { transform: translate(-50%, -50%) scale(1.22); }
+  .portrait[data-tracking] img { transition: transform .28s var(--ease); transform: translate(var(--shift-x), var(--shift-y)) scale(1.085); }
+  .portrait[data-tracking] .portrait-grid { transform: translate(calc(var(--shift-x) * -.4), calc(var(--shift-y) * -.4)) scale(1.08); }
+  .portrait-grid { transition: transform .45s var(--ease); }
+
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reading-progress {
+      display: block;
+      position: fixed;
+      inset: 0 0 auto;
+      height: 3px;
+      z-index: 45;
+      background: var(--lime);
+      transform-origin: left;
+      animation: reading linear both;
+      animation-timeline: scroll(root block);
+      pointer-events: none;
+    }
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy .intro, .hero-actions { animation: hero-copy-rise .85s var(--ease) both; }
+  .hero-copy .intro { animation-delay: .22s; }
+  .hero-actions { animation-delay: .32s; }
+  .slide-in h2 { animation: heading-sweep .85s var(--ease) both; }
+}
+@keyframes hero-copy-rise { from { opacity: .28; transform: translateY(25px); } to { opacity: 1; transform: none; } }
+@keyframes heading-sweep { from { clip-path: inset(0 40% 0 0); transform: translateX(-22px); } to { clip-path: inset(0); transform: none; } }
+@keyframes reading { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@media (hover: hover) and (pointer: fine) {
+  .project-index { cursor: grab; }
+  .project-index[data-dragging] { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+}

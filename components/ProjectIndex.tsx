@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { ArrowLeft, ArrowRight, ArrowUpRight, Braces, ChevronDown, MapPinned, ScanSearch, ShoppingBag, Wallet } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type PointerEvent } from "react"
 
 const filters = ["All work", "Applied AI", "Full stack"] as const
 
@@ -59,6 +59,7 @@ export default function ProjectIndex() {
   const [filter, setFilter] = useState<(typeof filters)[number]>("All work")
   const [edges, setEdges] = useState({ start: true, end: false })
   const rail = useRef<HTMLDivElement>(null)
+  const drag = useRef<{ x: number; left: number } | null>(null)
   const visibleProjects = projects.filter(project => filter === "All work" || project.category === filter)
 
   function syncEdges(node: HTMLDivElement) {
@@ -76,6 +77,36 @@ export default function ProjectIndex() {
     observer.observe(node)
     return () => observer.disconnect()
   }, [filter])
+
+  function beginDrag(event: PointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== "mouse" || event.button !== 0) return
+    const node = event.currentTarget
+    if (node.scrollWidth <= node.clientWidth || (event.target as Element).closest("a, button, summary")) return
+    event.preventDefault()
+    drag.current = { x: event.clientX, left: node.scrollLeft }
+  }
+
+  function updateDrag(event: PointerEvent<HTMLDivElement>) {
+    if (!drag.current || event.pointerType !== "mouse") return
+    const node = event.currentTarget
+    if (!(event.buttons & 1)) {
+      endDrag(event)
+      return
+    }
+    const distance = event.clientX - drag.current.x
+    if (!node.hasPointerCapture(event.pointerId)) {
+      if (Math.abs(distance) < 9) return
+      node.setPointerCapture(event.pointerId)
+      node.setAttribute("data-dragging", "")
+      window.getSelection()?.removeAllRanges()
+    }
+    node.scrollLeft = drag.current.left - distance
+  }
+
+  function endDrag(event: PointerEvent<HTMLDivElement>) {
+    drag.current = null
+    event.currentTarget.removeAttribute("data-dragging")
+  }
 
   function move(direction: number) {
     const node = rail.current
@@ -100,11 +131,11 @@ export default function ProjectIndex() {
         </div>
       </div>
       <p className="sr-only" role="status">{visibleProjects.length} projects shown</p>
-      <div className="project-index" id="project-rail" ref={rail} onScroll={event => syncEdges(event.currentTarget)}>
+      <div className="project-index" id="project-rail" ref={rail} onScroll={event => syncEdges(event.currentTarget)} onPointerDown={beginDrag} onPointerMove={updateDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={endDrag}>
         {visibleProjects.map(({ icon: Icon, ...project }) => (
           <article className="project-row" key={project.title} data-gesture>
             <div className="project-media">
-              {project.image && <Image src={project.image} alt="" fill sizes="(max-width: 740px) 90vw, 42vw" />}
+              {project.image && <Image src={project.image} alt="" draggable={false} fill sizes="(max-width: 740px) 90vw, 42vw" />}
               <div className="project-preview">
                 <Icon size={24} aria-hidden />
                 <span>{project.preview}</span>
