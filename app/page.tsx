@@ -67,7 +67,7 @@ export default function Home() {
             </details>
             <details>
               <summary><span>{hypermotiveExperience.company}</span><span aria-hidden>+</span></summary>
-              <p className="date">{hypermotiveExperience.role}</p>
+              <p className="date">{hypermotiveExperience.role} · {hypermotiveExperience.dates}</p>
               <p>{hypermotiveExperience.summary}</p>
             </details>
             <details>

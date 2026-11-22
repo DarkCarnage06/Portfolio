@@ -157,7 +157,7 @@ function generateLocalKnowledgeReply(message: string): string {
   if (lower.includes("experience") || lower.includes("internship") || lower.includes("isro") || lower.includes("hypermotive")) {
     return `Atharv's key experience includes:
 • **ISRO Space Science Outreach & ML Research**: Conducted space science awareness and developed an ML regression model for rocket thrust estimation based on simulation and propulsion parameters.
-• **${hypermotiveExperience.company} — ${hypermotiveExperience.role}**: ${hypermotiveExperience.summary}`;
+• **${hypermotiveExperience.company} — ${hypermotiveExperience.role}** (${hypermotiveExperience.dates}): ${hypermotiveExperience.summary}`;
   }
 
   if (lower.includes("contact") || lower.includes("email") || lower.includes("hire") || lower.includes("reach") || lower.includes("linkedin")) {
@@ -226,7 +226,7 @@ export async function POST(req: NextRequest) {
 
   if (/\bhyper\s*mo?tive\b/i.test(sanitizedMessage)) {
     return streamTextResponse(
-      `Atharv was a **${hypermotiveExperience.role}** at **${hypermotiveExperience.company}**. ${hypermotiveExperience.summary}`
+      `Atharv was a **${hypermotiveExperience.role}** at **${hypermotiveExperience.company}** (${hypermotiveExperience.dates}). ${hypermotiveExperience.summary}`
     );
   }
 

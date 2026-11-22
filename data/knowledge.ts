@@ -36,7 +36,7 @@ EXPERIENCE & RESEARCH:
    - Developed an ML-based regression and simulation model for rocket thrust estimation and prediction using simulation parameters and propulsion data.
    - Technologies: Machine Learning, Python, Data Analysis, Research.
 
-2. ${hypermotiveExperience.company} — ${hypermotiveExperience.role}:
+2. ${hypermotiveExperience.company} — ${hypermotiveExperience.role} (${hypermotiveExperience.dates}):
    - ${hypermotiveExperience.summary}
 
 FEATURED PROJECTS:
