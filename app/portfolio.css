@@ -142,3 +142,75 @@
   .project-links a:is(:hover, :focus-visible) svg,
   .footer-links a:is(:hover, :focus-visible) svg { transform: none; }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .portfolio { cursor: url("/cursor/portfolio-arrow.svg") 4 3, auto; }
+  .portfolio :is(a, button:not(:disabled), summary) { cursor: url("/cursor/portfolio-action.svg") 14 14, pointer; }
+  .portfolio :is(input, textarea, [contenteditable="true"]) { cursor: text; }
+}
+.portfolio .name-line { display: block; overflow: clip; color: var(--text); }
+.portfolio .name-line span { display: block; color: inherit; animation: name-slide .85s var(--ease) both; }
+.portfolio .name-accent { color: var(--lime); }
+.portfolio .name-accent span { animation-delay: .12s; }
+@keyframes name-slide { from { transform: translateY(96%); } to { transform: translateY(0); } }
+
+[data-gesture] { position: relative; }
+[data-gesture]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(18rem circle at var(--pointer-x, 50%) var(--pointer-y, 50%), #dbff3f24, transparent 75%);
+  transition: opacity .28s var(--ease);
+}
+[data-tracking]::after { opacity: 1; }
+.portrait[data-tracking] img {
+  transform: translate(var(--shift-x, 0px), var(--shift-y, 0px)) scale(1.04);
+}
+.portrait figcaption, .tech-marker { z-index: 1; }
+
+.project-index { padding-top: .35rem; }
+.project-media { min-height: 10rem; isolation: isolate; place-items: end start; }
+.project-media img { object-position: center 32%; opacity: .7; }
+.project-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #101114 0%, #101114a1 30%, transparent 75%);
+  pointer-events: none;
+}
+.project-preview {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: 1rem 1.25rem;
+  color: var(--lime);
+  font: 800 clamp(1.55rem, 3.3vw, 2.65rem)/.98 var(--font-display), sans-serif;
+}
+.project-preview svg { flex: none; transition: transform .3s var(--ease); }
+.project-row:is(:hover, :focus-within) .project-preview svg { transform: translateY(-4px); }
+.project-story { margin-top: .35rem; border-top: 1px solid var(--line); }
+.project-story summary {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  color: var(--text);
+  font-size: .88rem;
+  font-weight: 650;
+  list-style: none;
+}
+.project-story summary::-webkit-details-marker { display: none; }
+.project-story summary:hover { color: var(--lime); }
+.project-story summary svg { transition: transform .25s var(--ease); }
+.project-story[open] summary svg { transform: rotate(180deg); }
+.project-story[open] p { padding-bottom: .6rem; font-size: .9rem; animation: enter-up .3s var(--ease); }
+@media (prefers-reduced-motion: reduce) {
+  [data-gesture]::after { display: none; }
+  .project-row:is(:hover, :focus-within) .project-preview svg { transform: none; }
+}

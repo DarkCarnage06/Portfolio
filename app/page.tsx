@@ -34,14 +34,14 @@ export default function Home() {
       <section className="hero frame" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="role">AI &amp; ML developer</p>
-          <h1 id="hero-title">Atharv<br /><span>Randive</span></h1>
+          <h1 id="hero-title"><span className="name-line"><span>Atharv</span></span>{" "}<span className="name-line name-accent"><span>Randive</span></span></h1>
           <p className="intro">I build full-stack AI applications, from semantic job matching to tools that help teams understand their AI spending.</p>
           <div className="hero-actions">
             <a className="pill" href="#projects">Explore my work <ArrowDownRight size={18} aria-hidden /></a>
             <a className="pill outline" href="#contact">Get in touch</a>
           </div>
         </div>
-        <figure className="portrait">
+        <figure className="portrait" data-gesture>
           <div className="portrait-grid" aria-hidden />
           <Image src={personal.avatar} alt="Atharv Randive" fill priority sizes="(max-width: 740px) 95vw, 52vw" />
           <span className="tech-marker marker-rag"><Binary size={16} aria-hidden /> RAG</span>
@@ -83,7 +83,7 @@ export default function Home() {
         <h2 id="skills-title">Technical <span>skills</span></h2>
         <div className="skills-grid">
           {skillGroups.map(({ name, icon: Icon, tools }) => (
-            <div className="skill-group" key={name}>
+            <div className="skill-group" key={name} data-gesture>
               <Icon size={23} aria-hidden />
               <h3>{name}</h3>
               <ul>{tools.map(tool => <li key={tool}>{tool}</li>)}</ul>
