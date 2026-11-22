@@ -13,7 +13,7 @@ interface ChatMessage {
 const SUGGESTED_QUESTIONS = [
   "What projects has Atharv built?",
   "What are his skills?",
-  "Tell me about his experience",
+  "What did Atharv do at Hypermotive Solutions?",
   "How can I contact him?",
 ];
 
@@ -47,7 +47,7 @@ function renderFormattedText(text: string) {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#7C6CFF] underline underline-offset-2 hover:text-[#9B8CFF]"
+              className="text-[var(--lime)] underline underline-offset-2 hover:text-[#efffa9]"
             >
               {label}
             </a>
@@ -59,14 +59,14 @@ function renderFormattedText(text: string) {
 
     if (isBullet) {
       return (
-        <li key={lIdx} className="ml-4 list-disc text-sm text-[#9AA3B8] leading-relaxed">
+        <li key={lIdx} className="ml-4 list-disc text-sm text-[var(--muted)] leading-relaxed">
           {formattedContent}
         </li>
       );
     }
 
     return (
-      <p key={lIdx} className="text-sm text-[#9AA3B8] leading-relaxed min-h-[1.2rem]">
+      <p key={lIdx} className="text-sm text-[var(--muted)] leading-relaxed min-h-[1.2rem]">
         {formattedContent}
       </p>
     );
@@ -107,7 +107,7 @@ export default function Chatbot() {
 
   // Auto-scroll to bottom
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   };
 
   useEffect(() => {
@@ -231,15 +231,16 @@ export default function Chatbot() {
   return (
     <>
       {/* Floating Launcher Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="chat-launcher fixed bottom-6 right-6 z-50">
         <button
+          aria-expanded={isOpen}
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={isOpen ? "Close chat with Atharv's AI" : "Chat with Atharv's AI"}
-          className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-[#5B6CFF] to-[#7C5CFF] text-white shadow-[0_4px_24px_rgba(91,108,255,0.45)] transition-all duration-300 hover:scale-105 active:scale-95"
+          className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[var(--lime)] text-[var(--ink)] shadow-[0_4px_24px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-105 active:scale-95"
         >
           {/* Subtle pulse ring */}
           {!isOpen && (
-            <span className="absolute -inset-1 -z-10 animate-ping rounded-full bg-[#7C6CFF] opacity-35" />
+            <span className="absolute -inset-1 -z-10 motion-safe:animate-pulse rounded-full bg-[var(--lime)] opacity-35" />
           )}
 
           {isOpen ? (
@@ -255,14 +256,13 @@ export default function Chatbot() {
         <div
           ref={dialogRef}
           role="dialog"
-          aria-modal="true"
           aria-label="Ask Atharv - Portfolio AI Assistant"
-          className="native-cursor fixed bottom-24 right-4 z-50 flex h-[560px] max-h-[calc(100vh-120px)] w-[380px] max-w-[calc(100vw-32px)] flex-col overflow-hidden rounded-2xl border border-[#1E2644] bg-[#0D1328]/95 shadow-[0_16px_50px_rgba(0,0,0,0.65)] backdrop-blur-xl transition-all duration-300"
+          className="portfolio-chat native-cursor fixed bottom-24 right-4 z-50 flex h-[560px] max-h-[calc(100dvh-120px)] w-[380px] max-w-[calc(100vw-32px)] flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--panel)] shadow-[0_16px_50px_rgba(0,0,0,0.65)] backdrop-blur-xl transition-all duration-300"
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-[#1E2644] bg-[#0A0F24]/90 px-4 py-3.5">
+          <div className="flex items-center justify-between border-b border-[var(--line)] bg-[var(--ink)] px-4 py-3.5">
             <div className="flex items-center gap-3">
-              <div className="relative h-9 w-9 overflow-hidden rounded-full border border-[#7C6CFF]/40 bg-[#1A1B3A]">
+              <div className="relative h-9 w-9 overflow-hidden rounded-full border border-[#657644] bg-[#24291c]">
                 <Image
                   src="/images/profile.png"
                   alt="Atharv"
@@ -270,14 +270,14 @@ export default function Chatbot() {
                   height={36}
                   className="object-cover"
                 />
-                <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-[#0A0F24] bg-emerald-500" />
+                <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-[var(--ink)] bg-emerald-500" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-white flex items-center gap-1.5">
+                <h3 className="chat-heading text-white flex items-center gap-1.5">
                   Ask about Atharv
-                  <Sparkles className="h-3.5 w-3.5 text-[#7C6CFF]" />
+                  <Sparkles className="h-3.5 w-3.5 text-[var(--lime)]" />
                 </h3>
-                <p className="text-[11px] text-text-muted flex items-center gap-1.5">
+                <p className="text-[11px] text-[var(--muted)] flex items-center gap-1.5">
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
                   Online AI Assistant
                 </p>
@@ -289,7 +289,7 @@ export default function Chatbot() {
                 <button
                   onClick={handleClearChat}
                   title="Clear chat"
-                  className="rounded-lg p-1.5 text-text-muted hover:bg-[#1E2644] hover:text-white transition-colors"
+                  className="rounded-lg p-1.5 text-[var(--muted)] hover:bg-[var(--line)] hover:text-white transition-colors"
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>
@@ -297,7 +297,7 @@ export default function Chatbot() {
               <button
                 onClick={() => setIsOpen(false)}
                 title="Close chat"
-                className="rounded-lg p-1.5 text-text-muted hover:bg-[#1E2644] hover:text-white transition-colors"
+                className="rounded-lg p-1.5 text-[var(--muted)] hover:bg-[var(--line)] hover:text-white transition-colors"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -311,24 +311,24 @@ export default function Chatbot() {
           >
             {messages.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-6 text-center">
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1A1B3A] text-[#7C6CFF] border border-[#2C2F63]">
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#24291c] text-[var(--lime)] border border-[#657644]">
                   <Bot className="h-6 w-6" />
                 </div>
-                <h4 className="text-sm font-semibold text-white">Hi! I&apos;m Atharv&apos;s AI Assistant</h4>
-                <p className="mt-1 text-xs text-text-muted max-w-[260px]">
+                <h4 className="chat-heading text-white">Hi! I&apos;m Atharv&apos;s AI Assistant</h4>
+                <p className="mt-1 text-xs text-[var(--muted)] max-w-[260px]">
                   Ask me anything about Atharv&apos;s projects, machine learning research, skills, or experience.
                 </p>
 
                 {/* Suggested Question Chips */}
                 <div className="mt-5 flex flex-col gap-2 w-full">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#7C6CFF]/80 text-left">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--lime)] text-left">
                     Suggested Questions
                   </span>
                   {SUGGESTED_QUESTIONS.map((q, idx) => (
                     <button
                       key={idx}
                       onClick={() => handleSend(q)}
-                      className="rounded-xl border border-[#1E2644] bg-[#0A0F24]/80 px-3 py-2 text-left text-xs text-slate-300 hover:border-[#5B6CFF]/60 hover:bg-[#151C3B] hover:text-white transition-all duration-200"
+                      className="rounded-xl border border-[var(--line)] bg-[var(--ink)] px-3 py-2 text-left text-xs text-slate-300 hover:border-[var(--lime)] hover:bg-[#24291c] hover:text-white transition-all duration-200"
                     >
                       {q}
                     </button>
@@ -346,8 +346,8 @@ export default function Chatbot() {
                   <div
                     className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm shadow-sm ${
                       msg.role === "user"
-                        ? "bg-gradient-to-r from-[#5B6CFF] to-[#7C5CFF] text-white rounded-br-none"
-                        : "border border-[#1E2644] bg-[#0A0F24] text-slate-200 rounded-bl-none"
+                        ? "bg-[var(--lime)] text-[var(--ink)] rounded-br-none"
+                        : "border border-[var(--line)] bg-[var(--ink)] text-slate-200 rounded-bl-none"
                     }`}
                   >
                     {msg.role === "user" ? (
@@ -362,10 +362,10 @@ export default function Chatbot() {
 
             {/* Typing Indicator */}
             {isTyping && (
-              <div className="flex items-center gap-1.5 rounded-2xl border border-[#1E2644] bg-[#0A0F24] px-3.5 py-2.5 text-xs text-text-muted w-fit rounded-bl-none">
-                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#7C6CFF]" style={{ animationDelay: "0ms" }} />
-                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#7C6CFF]" style={{ animationDelay: "150ms" }} />
-                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#7C6CFF]" style={{ animationDelay: "300ms" }} />
+              <div className="flex items-center gap-1.5 rounded-2xl border border-[var(--line)] bg-[var(--ink)] px-3.5 py-2.5 text-xs text-[var(--muted)] w-fit rounded-bl-none">
+                <span className="h-1.5 w-1.5 motion-safe:animate-pulse rounded-full bg-[var(--lime)]" style={{ animationDelay: "0ms" }} />
+                <span className="h-1.5 w-1.5 motion-safe:animate-pulse rounded-full bg-[var(--lime)]" style={{ animationDelay: "150ms" }} />
+                <span className="h-1.5 w-1.5 motion-safe:animate-pulse rounded-full bg-[var(--lime)]" style={{ animationDelay: "300ms" }} />
               </div>
             )}
 
@@ -378,7 +378,7 @@ export default function Chatbot() {
               e.preventDefault();
               handleSend();
             }}
-            className="border-t border-[#1E2644] bg-[#0A0F24]/90 p-3"
+            className="border-t border-[var(--line)] bg-[var(--ink)] p-3"
           >
             <div className="relative flex items-center">
               <input
@@ -389,18 +389,18 @@ export default function Chatbot() {
                 placeholder="Ask about Atharv..."
                 maxLength={500}
                 disabled={isLoading}
-                className="w-full rounded-xl border border-[#1E2644] bg-[#0D1328] px-3.5 py-2.5 pr-10 text-xs text-white placeholder-text-muted focus:border-[#7C6CFF] focus:outline-none focus:ring-1 focus:ring-[#7C6CFF] disabled:opacity-50"
+                className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] px-3.5 py-2.5 pr-10 text-xs text-white placeholder-text-muted focus:border-[var(--lime)] focus:outline-none focus:ring-1 focus:ring-[var(--lime)] disabled:opacity-50"
               />
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
                 aria-label="Send message"
-                className="absolute right-2 flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-r from-[#5B6CFF] to-[#7C5CFF] text-white transition-opacity hover:opacity-90 disabled:opacity-30"
+                className="absolute right-2 flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--lime)] text-[var(--ink)] transition-opacity hover:opacity-90 disabled:opacity-30"
               >
                 <Send className="h-3.5 w-3.5" />
               </button>
             </div>
-            <div className="mt-1 flex items-center justify-between text-[10px] text-text-muted px-1">
+            <div className="mt-1 flex items-center justify-between text-[10px] text-[var(--muted)] px-1">
               <span>Answers only about Atharv</span>
               <span>{input.length}/500</span>
             </div>

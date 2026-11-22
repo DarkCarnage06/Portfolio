@@ -1,3 +1,5 @@
+import { hypermotiveExperience } from "./experience";
+
 /**
  * Structured knowledge base for the portfolio chatbot ("Ask Atharv").
  * Contains verified facts about Atharv Randive.
@@ -34,10 +36,8 @@ EXPERIENCE & RESEARCH:
    - Developed an ML-based regression and simulation model for rocket thrust estimation and prediction using simulation parameters and propulsion data.
    - Technologies: Machine Learning, Python, Data Analysis, Research.
 
-2. Hypermotive ML Internship:
-   - Worked on machine learning algorithms including regression, clustering, Support Vector Machines (SVM), and Random Forests.
-   - Built and trained image-detection and classification models with scikit-learn, TensorFlow, and CNNs.
-   - Technologies: Python, scikit-learn, TensorFlow, CNN.
+2. ${hypermotiveExperience.company} — ${hypermotiveExperience.role}:
+   - ${hypermotiveExperience.summary}
 
 FEATURED PROJECTS:
 1. Internship Studio 2.0:

@@ -1,4 +1,4 @@
-﻿.portfolio {
+:root {
   --ink: #101114;
   --panel: #191b1e;
   --line: #383b3b;
@@ -6,6 +6,8 @@
   --text: #f4f6ef;
   --muted: #b9bdb5;
   --ease: cubic-bezier(.18, .76, .24, 1);
+}
+.portfolio {
   background: var(--ink);
   color: var(--text);
   color-scheme: dark;
@@ -73,7 +75,7 @@
 .slider-controls button:disabled { opacity: .4; cursor: default; }
 .filters button[aria-pressed=true], .filters button:hover, .slider-controls button:hover:not(:disabled), .project-links a:hover { background: var(--lime); color: var(--ink); border-color: var(--lime); }
 .project-index { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 1rem) / 2); gap: 1rem; overflow-x: auto; padding-bottom: .8rem; scroll-snap-type: x mandatory; scrollbar-color: #809543 var(--ink); }
-.project-row { min-width: 0; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; animation: enter-right .4s var(--ease) both; }
+.project-row { min-width: 0; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; animation: enter-right .4s var(--ease) backwards; }
 .project-media { display: grid; place-items: center; position: relative; aspect-ratio: 2.5; overflow: hidden; background: repeating-linear-gradient(135deg, #1b2116 0 12px, #20291a 12px 13px); color: var(--lime); border-bottom: 1px solid var(--line); }
 .project-media img { object-fit: cover; transition: transform .5s var(--ease); }
 .project-row:hover img, .project-row:focus-within img { transform: scale(1.055); }
@@ -103,4 +105,40 @@
   html { scroll-behavior: auto; }
   .portfolio *, .portfolio *::before, .portfolio *::after { animation: none !important; transition: none !important; }
   .portrait:hover img, .project-row:hover img, .pill:hover { transform: none; }
+}
+
+.portfolio-chat { font-family: var(--font-inter), sans-serif; animation: enter-up .3s var(--ease) both; }
+.chat-heading { font: 800 1.55rem/1 var(--font-display), sans-serif; letter-spacing: .025em; text-transform: uppercase; }
+.portfolio-chat :is(button, a):focus-visible, .chat-launcher button:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.site-header nav a { position: relative; }
+.site-header nav a::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 .45rem;
+  height: 1px;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s var(--ease);
+}
+.site-header nav a:is(:hover, :focus-visible)::after { transform: scaleX(1); }
+.hero-actions svg, .project-links svg, .footer-links svg { transition: transform .25s var(--ease); }
+.hero-actions a:is(:hover, :focus-visible) svg { transform: translate(3px, 3px); }
+.project-links a:is(:hover, :focus-visible) svg, .footer-links a:is(:hover, :focus-visible) svg { transform: translate(2px, -2px); }
+.tech-marker { animation: enter-up .7s var(--ease) both; }
+.marker-rag { animation-delay: .25s; }
+.marker-next { animation-delay: .39s; }
+.marker-data { animation-delay: .53s; }
+.skill-group { transition: transform .26s var(--ease), border-color .25s, background .25s; }
+.project-row { transition: transform .28s var(--ease), border-color .25s, background .25s; }
+.experience details[open] p { animation: enter-up .28s var(--ease) both; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .skill-group:hover, .project-row:hover { transform: translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-chat, .portfolio-chat *, .chat-launcher * { animation: none !important; transition: none !important; }
+  .chat-launcher button:hover, .chat-launcher button:active { transform: none; }
+  .hero-actions a:is(:hover, :focus-visible) svg,
+  .project-links a:is(:hover, :focus-visible) svg,
+  .footer-links a:is(:hover, :focus-visible) svg { transform: none; }
 }

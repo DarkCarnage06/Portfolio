@@ -1,7 +1,15 @@
-﻿import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata } from "next";
+import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
+import "./portfolio.css";
 import Chatbot from "@/components/Chatbot";
+
+const display = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: "800",
+  display: "swap",
+  variable: "--font-display",
+});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${display.variable}`}>
       <body className="bg-[#070B1A] text-[#9AA3B8] font-sans antialiased min-h-screen">
         {children}
         <Chatbot />

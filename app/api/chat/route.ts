@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { hypermotiveExperience } from "@/data/experience";
 import { ATHARV_KNOWLEDGE } from "@/data/knowledge";
 
 // In-memory rate limiter per IP
@@ -156,7 +157,7 @@ function generateLocalKnowledgeReply(message: string): string {
   if (lower.includes("experience") || lower.includes("internship") || lower.includes("isro") || lower.includes("hypermotive")) {
     return `Atharv's key experience includes:
 • **ISRO Space Science Outreach & ML Research**: Conducted space science awareness and developed an ML regression model for rocket thrust estimation based on simulation and propulsion parameters.
-• **Hypermotive ML Internship**: Trained and evaluated ML algorithms (regression, clustering, SVM, Random Forest) and built computer vision models with scikit-learn and TensorFlow.`;
+• **${hypermotiveExperience.company} — ${hypermotiveExperience.role}**: ${hypermotiveExperience.summary}`;
   }
 
   if (lower.includes("contact") || lower.includes("email") || lower.includes("hire") || lower.includes("reach") || lower.includes("linkedin")) {
@@ -221,6 +222,12 @@ export async function POST(req: NextRequest) {
   const fastRefusal = checkFastRefusal(sanitizedMessage);
   if (fastRefusal) {
     return streamTextResponse(fastRefusal);
+  }
+
+  if (/\bhyper\s*mo?tive\b/i.test(sanitizedMessage)) {
+    return streamTextResponse(
+      `Atharv was a **${hypermotiveExperience.role}** at **${hypermotiveExperience.company}**. ${hypermotiveExperience.summary}`
+    );
   }
 
   // 4. Check for Model API Keys
