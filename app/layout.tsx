@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Inter } from "next/font/google";
+import { Anton, DM_Sans } from "next/font/google";
 import "./globals.css";
 import "./portfolio.css";
+import "./editorial.css";
 import Chatbot from "@/components/Chatbot";
 
-const display = Barlow_Condensed({
+const display = Anton({
   subsets: ["latin"],
-  weight: "800",
+  weight: "400",
   display: "swap",
   variable: "--font-display",
 });
 
-const inter = Inter({
+const bodyFont = DM_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
@@ -44,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${display.variable}`}>
+    <html lang="en" className={`${bodyFont.variable} ${display.variable}`}>
       <body className="bg-[#070B1A] text-[#9AA3B8] font-sans antialiased min-h-screen">
         {children}
         <Chatbot />

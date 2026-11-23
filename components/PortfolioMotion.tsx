@@ -69,10 +69,17 @@ export default function PortfolioMotion({ children }: { children: ReactNode }) {
       })
     }
 
+    function closeMenu(event: MouseEvent) {
+      const link = (event.target as Element).closest(".editorial-menu a")
+      link?.closest("details")?.removeAttribute("open")
+    }
+
+    surface.addEventListener("click", closeMenu)
     surface.addEventListener("pointermove", track, { passive: true })
     surface.addEventListener("pointerleave", leave)
     motion.addEventListener("change", leave)
     return () => {
+      surface.removeEventListener("click", closeMenu)
       observer.disconnect()
       leave()
       surface.removeEventListener("pointermove", track)

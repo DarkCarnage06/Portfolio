@@ -57,10 +57,15 @@ const projects = [
 
 export default function ProjectIndex() {
   const [filter, setFilter] = useState<(typeof filters)[number]>("All work")
+  const [query, setQuery] = useState("")
   const [edges, setEdges] = useState({ start: true, end: false })
   const rail = useRef<HTMLDivElement>(null)
   const drag = useRef<{ x: number; left: number } | null>(null)
-  const visibleProjects = projects.filter(project => filter === "All work" || project.category === filter)
+  const search = query.trim().toLowerCase()
+  const visibleProjects = projects.filter(project =>
+    (filter === "All work" || project.category === filter) &&
+    [project.title, project.summary, project.stack].some(value => value.toLowerCase().includes(search))
+  )
 
   function syncEdges(node: HTMLDivElement) {
     const start = node.scrollLeft < 4
@@ -76,7 +81,7 @@ export default function ProjectIndex() {
     const observer = new ResizeObserver(() => syncEdges(node))
     observer.observe(node)
     return () => observer.disconnect()
-  }, [filter])
+  }, [filter, search])
 
   function beginDrag(event: PointerEvent<HTMLDivElement>) {
     if (event.pointerType !== "mouse" || event.button !== 0) return
@@ -125,12 +130,17 @@ export default function ProjectIndex() {
             <button key={label} type="button" aria-pressed={filter === label} onClick={() => setFilter(label)}>{label}</button>
           ))}
         </div>
+        <label className="project-search">
+          <span className="sr-only">Search projects</span>
+          <ScanSearch size={17} aria-hidden />
+          <input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search projects" />
+        </label>
         <div className="slider-controls" role="group" aria-label="Slide through projects">
           <button type="button" aria-label="Previous project" aria-controls="project-rail" disabled={edges.start} onClick={() => move(-1)}><ArrowLeft size={19} aria-hidden /></button>
           <button type="button" aria-label="Next project" aria-controls="project-rail" disabled={edges.end} onClick={() => move(1)}><ArrowRight size={19} aria-hidden /></button>
         </div>
       </div>
-      <p className="sr-only" role="status">{visibleProjects.length} projects shown</p>
+      <p className="project-count" role="status">{visibleProjects.length} {visibleProjects.length === 1 ? "project" : "projects"}</p>
       <div className="project-index" id="project-rail" ref={rail} onScroll={event => syncEdges(event.currentTarget)} onPointerDown={beginDrag} onPointerMove={updateDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={endDrag}>
         {visibleProjects.map(({ icon: Icon, ...project }) => (
           <article className="project-row" key={project.title} data-gesture>
